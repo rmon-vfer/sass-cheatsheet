@@ -56,7 +56,7 @@ header button:hover {
 ```
 
 ## Nested selectors
-Nothing special here, these are mainly used to improve code readiblity.
+Nothing special here, these are mainly used to improve code readability.
 
 Note the ampersand (&) when using a CSS pseudoclass
 ```scss
