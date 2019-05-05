@@ -1,7 +1,14 @@
 # SASS - (Syntactically Awesome StyleSheets)
 ### `By @ramon_vilafer`
 ---
-SASS (or Syntactically Awesome StyleSheets) is a variation of CSS, which allows you to write modern and expresive sytlesheets very quickly. 
+Sass is a CSS pre-processor with syntax advancements. Style sheets in the advanced syntax are processed by the program, and turned into regular CSS style sheets. However, they do not extend the CSS standard itself.
+
+CSS variables are supported and can be utilized but not as well as pre-processor variables.
+
+>There are two syntaxes available for Sass. The first, known as SCSS (Sassy CSS) and used throughout this reference, is an >extension of the syntax of CSS. This means that every valid CSS stylesheet is a valid SCSS file with the same meaning. This >syntax is enhanced with the Sass features described below. Files using this syntax have the .scss extension.
+
+>The second and older syntax, known as the indented syntax (or sometimes just “Sass”), provides a more concise way of writing >CSS. It uses indentation rather than brackets to indicate nesting of selectors, and newlines rather than semicolons to separate >properties. Files using this syntax have the .sass extension.
+ 
 
 `.scss` files are _transpiled_ to `.css`, usually using node.js, but also with _really cool_ extensions in your editor (like _live scss compile_) for VSCode.
 
@@ -276,6 +283,22 @@ header{
             background: $dangerColor;
         }
     }
+}
+```
+SASS also supports a basic if/else structure:
+```scss
+@mixin clearfix($width: 'auto') { /* Here 'auto' is the default value for $width*/
+
+  @if $width == 'auto' {
+
+    // if width is not passed, or empty do this
+
+  } @else {
+
+    display: inline-block;
+    width: $width;
+
+  }
 }
 ```
 
