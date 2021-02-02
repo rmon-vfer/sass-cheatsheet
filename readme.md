@@ -1,19 +1,18 @@
 # SASS - (Syntactically Awesome StyleSheets)
-### `By @ramon_vilafer`
+### By _Ramón Vila_ <2021>
 ---
-Sass is a CSS pre-processor with syntax advancements. Style sheets in the advanced syntax are processed by the program, and turned into regular CSS style sheets. However, they do not extend the CSS standard itself.
+Sass is a CSS pre-processor with syntax advancements. Style sheets in the advanced syntax are processed by the SASS transpiler, and turned into regular CSS style sheets. 
 
-CSS variables are supported and can be utilized but not as well as pre-processor variables.
+CSS variables are supported and can be utilized but sass own variables are preferred.
 
-There are two syntaxes available for Sass. The first, known as SCSS (Sassy CSS) and used throughout this reference, is an extension of the syntax of CSS. This means that every valid CSS stylesheet is a valid SCSS file with the same meaning. This syntax is enhanced with the Sass features described below. Files using this syntax have the .scss extension.
+There are two syntaxes available for Sass. The first, known as SCSS (Sassy CSS) and used throughout this reference, is an extension of the syntax of CSS. This means that every valid CSS stylesheet is a valid SCSS file with the same meaning. Files using this syntax have the .scss extension.
 
 The second and older syntax, known as the indented syntax (or sometimes just “Sass”), provides a more concise way of writing CSS. It uses indentation rather than brackets to indicate nesting of selectors, and newlines rather than semicolons to separate >properties. Files using this syntax have the .sass extension.
- 
 
-`.scss` files are _transpiled_ to `.css`, usually using node.js, but also with _really cool_ extensions in your editor (like _live scss compile_) for VSCode.
+`.scss` files are converted to `.css` using some transpiler (node.js/ Dart) either manually or using Webpack, but also with _cool_ extensions in your editor (like _live scss compile_) for VSCode.
 
 ## Standard CSS
-It may seem obvious, but you can use standard CSS.
+Obviously, you can use Standard CSS
 ```scss
 header{
     background: lightblue;
@@ -27,7 +26,7 @@ div section {
 ```
 
 ## Constants
-If you find yourself repeating a value all along your code, then SASS constants may seem like a great idea!
+Used to avoid value duplication.
 
 Some ideas are:
 - Paddings, margins...
@@ -63,9 +62,9 @@ header button:hover {
 ```
 
 ## Nested selectors
-Nothing special here, these are mainly used to improve code readability.
+Used to improve code readability.
 
-Note the ampersand (&) when using a CSS pseudoclass
+When using nested selectors you can add an ampersand (&) to append the parent selector to the children.
 ```scss
 $primaryColor = rgb(56, 146, 142);
 
@@ -83,6 +82,13 @@ header{
         display: flex;
         justify-content: center;
         
+        /*
+         * This will compile to
+         * button-huge */
+        &-huge {
+            size: 5em;
+        }
+        
         /* 
          * This rules apply to all hovered 
          * buttons in the header section */
@@ -94,7 +100,7 @@ header{
 ```
 
 ## Imports and multiple files
-Let's suppose we have the following `main.scss`:
+Suppose you have the following `main.scss`:
 
 #### main.scss
 ```scss
@@ -192,7 +198,7 @@ footer {
     }
 }
 ```
-Note the underscore (`_`) previous to all filenames, except `main.scss` (which is the one importing the rest)
+Note the underscore (`_`) previous to all filenames, except `main.scss` (which is the one importing the other ones)
 
 ## Mixins
 Mixins are _like little functions_, that group a bunch of different rules. They are __very__ useful to reduce code size and increase readability.
@@ -290,14 +296,11 @@ SASS also supports a basic if/else structure:
 @mixin clearfix($width: 'auto') { /* Here 'auto' is the default value for $width*/
 
   @if $width == 'auto' {
-
     // if width is not passed, or empty do this
 
   } @else {
-
     display: inline-block;
     width: $width;
-
   }
 }
 ```
